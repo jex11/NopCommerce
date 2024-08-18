@@ -8,6 +8,7 @@ using Nop.Core.Caching;
 using Nop.Core.Domain;
 using Nop.Core.Domain.Affiliates;
 using Nop.Core.Domain.Blogs;
+using Nop.Core.Domain.Book;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Cms;
 using Nop.Core.Domain.Common;
@@ -64,6 +65,7 @@ namespace Nop.Services.Installation
         private readonly IRepository<Address> _addressRepository;
         private readonly IRepository<Affiliate> _affiliateRepository;
         private readonly IRepository<BlogPost> _blogPostRepository;
+        private readonly IRepository<Book> _bookRepository;
         private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<CategoryTemplate> _categoryTemplateRepository;
         private readonly IRepository<Country> _countryRepository;
@@ -131,6 +133,7 @@ namespace Nop.Services.Installation
             IRepository<Address> addressRepository,
             IRepository<Affiliate> affiliateRepository,
             IRepository<BlogPost> blogPostRepository,
+            IRepository<Book> bookRepository,
             IRepository<Category> categoryRepository,
             IRepository<CategoryTemplate> categoryTemplateRepository,
             IRepository<Country> countryRepository,
@@ -194,6 +197,7 @@ namespace Nop.Services.Installation
             _addressRepository = addressRepository;
             _affiliateRepository = affiliateRepository;
             _blogPostRepository = blogPostRepository;
+            _bookRepository = bookRepository;
             _categoryRepository = categoryRepository;
             _categoryTemplateRepository = categoryTemplateRepository;
             _countryRepository = countryRepository;
@@ -12440,6 +12444,27 @@ namespace Nop.Services.Installation
             _warehouseRepository.Insert(warehouses);
         }
 
+        protected virtual void InstallBooks()
+        {
+            var books = new List<Book>
+            {
+                new Book
+                {
+                    BookName = "BK-Harry Potter",
+                    CreatedBy = "CodeFirstInstallation",
+                    CreatedOn = DateTime.UtcNow
+                },
+                new Book
+                {
+                    BookName = "BK-Mr. Bean",
+                    CreatedBy = "CodeFirstInstallation",
+                    CreatedOn = DateTime.UtcNow
+                }
+            };
+
+            _bookRepository.Insert(books);            
+        }
+
         protected virtual void InstallVendors()
         {
             var vendors = new List<Vendor>
@@ -12595,6 +12620,7 @@ namespace Nop.Services.Installation
             InstallPolls();
             InstallWarehouses();
             InstallVendors();
+            InstallBooks();
             InstallAffiliates();
             InstallOrders();
             InstallActivityLog(defaultUserEmail);

@@ -2,7 +2,7 @@
 
 @{
     //page title
-    ViewBag.PageTitle = T("Admin.Books").Text;
+    ViewBag.PageTitle = "Books";
     //active menu item (system name)
     Html.SetActiveMenuItemSystemName("Books");
 }
@@ -14,7 +14,7 @@
 
 <div class="content-header clearfix">
     <h1 class="pull-left">
-        @T("Admin.Books")
+        Books
     </h1>
     <div class="pull-right">
         <a asp-action="Create" class="btn bg-blue">
@@ -41,7 +41,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <nop-label asp-for="SearchName" />
+                                        <span>Book Name: </span>
                                     </div>
                                     <div class="col-md-8">
                                         <nop-editor asp-for="SearchName" />
@@ -86,17 +86,24 @@
                     },
                    ColumnCollection = new List<ColumnProperty>
                     {
-                    new ColumnProperty(nameof(BookModel.BookName))
+                    new ColumnProperty(nameof(VendorModel.Name))
                     {
                     Title = T("Admin.Books.Fields.Name").Text,
                     Width = "300"
-                    },                   
-                    new ColumnProperty(nameof(BookModel.CreatedOn))
+                    },
+                    new ColumnProperty(nameof(VendorModel.Email))
                     {
-                    Title = T("Admin.Vendors.Fields.Date").Text,
+                    Title = T("Admin.Books.Fields.Email").Text,
                     Width = "300"
                     },
-                    new ColumnProperty(nameof(BookModel.Id))
+                    new ColumnProperty(nameof(VendorModel.Active))
+                    {
+                    Title = T("Admin.Vendors.Fields.Active").Text,
+                    Width = "50",
+                    ClassName =  NopColumnClassDefaults.CenterAll,
+                    Render = new RenderBoolean()
+                    },
+                    new ColumnProperty(nameof(VendorModel.Id))
                     {
                     Title = T("Admin.Common.Edit").Text,
                     Width = "50",

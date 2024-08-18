@@ -276,6 +276,7 @@
         public static string VendorDetailsBlock => "admin_vendor_details_block";
         public static string VendorDetailsButtons => "admin_vendor_details_buttons";
         public static string VendorListButtons => "admin_vendor_list_buttons";
+        public static string BookDetailsBlock => "admin_book_details_block";
         public static string VendorSettingsButtons => "admin_vendor_settings_buttons";
         public static string VendorSettingsDetailsBlock => "admin_vendor_settings_details_block";
         public static string WarehouseDetailsBottom => "admin_warehouse_details_bottom";

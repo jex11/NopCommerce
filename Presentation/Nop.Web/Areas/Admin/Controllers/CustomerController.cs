@@ -29,7 +29,9 @@ using Nop.Services.Stores;
 using Nop.Services.Tax;
 using Nop.Web.Areas.Admin.Factories;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+using Nop.Web.Areas.Admin.Models.Books;
 using Nop.Web.Areas.Admin.Models.Customers;
+using Nop.Web.Areas.Admin.Models.Vendors;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc;
 using Nop.Web.Framework.Mvc.Filters;
@@ -1306,6 +1308,33 @@ namespace Nop.Web.Areas.Admin.Controllers
 
             //if we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        #endregion
+
+        #region Book
+
+        public virtual IActionResult Book()
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
+
+            //prepare model
+            //var model = _bookModelFactory.PrepareBookModel(new BookModel(), new Core.Domain.Book.Book());
+
+            return View(new BookSearchModel());
+        }
+
+        [HttpPost]
+        public virtual IActionResult BookList(BookSearchModel searchModel)
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageVendors))
+                return AccessDeniedDataTablesJson();
+
+            //prepare model
+            //var model = _bookModelFactory.PrepareBookListModel(searchModel);
+
+            return Json(new BookListModel());
         }
 
         #endregion

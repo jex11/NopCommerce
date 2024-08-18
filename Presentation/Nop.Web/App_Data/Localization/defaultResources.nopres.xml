@@ -18438,4 +18438,13 @@
   <LocaleResource Name="Wishlist.YourWishlistURL">
     <Value>Your wishlist URL for sharing</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Books">
+    <Value>Books</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Books.AddNew">
+    <Value>Add a new book</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Books.BackToList">
+    <Value>back to book list</Value>
+  </LocaleResource>
 </Language>

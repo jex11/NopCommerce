@@ -1,6 +1,6 @@
 ﻿using Nop.Core.Domain;
 using Nop.Core.Domain.Book;
-using Nop.Web.Areas.Admin.Models.Book;
+using Nop.Web.Areas.Admin.Models.Books;
 
 namespace Nop.Web.Areas.Admin.Factories
 {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Nop.Core.Domain.Affiliates;
 using Nop.Core.Domain.Blogs;
+using Nop.Core.Domain.Book;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Common;
 using Nop.Core.Domain.Configuration;
@@ -34,6 +35,7 @@ using Nop.Services.Shipping.Pickup;
 using Nop.Services.Tax;
 using Nop.Web.Areas.Admin.Models.Affiliates;
 using Nop.Web.Areas.Admin.Models.Blogs;
+using Nop.Web.Areas.Admin.Models.Books;
 using Nop.Web.Areas.Admin.Models.Catalog;
 using Nop.Web.Areas.Admin.Models.Cms;
 using Nop.Web.Areas.Admin.Models.Common;
@@ -79,6 +81,7 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
             CreateCatalogMaps();
             CreateCmsMaps();
             CreateCommonMaps();
+            CreateBooksMaps();
             CreateCustomersMaps();
             CreateDirectoryMaps();
             CreateDiscountsMaps();
@@ -657,6 +660,11 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
                 .ForMember(setting => setting.Store, options => options.Ignore());
         }
 
+        protected virtual void CreateBooksMaps()
+        {
+            CreateMap<Book, BookModel>().ReverseMap();
+        }
+
         /// <summary>
         /// Create customers maps 
         /// </summary>
@@ -701,7 +709,7 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
                 .ForMember(model => model.PrimaryStoreCurrencyCode, options => options.Ignore())
                 .ForMember(model => model.PurchasesPointsValidity_OverrideForStore, options => options.Ignore())
                 .ForMember(model => model.RegistrationPointsValidity_OverrideForStore, options => options.Ignore());
-            CreateMap<RewardPointsSettingsModel, RewardPointsSettings>();
+            CreateMap<RewardPointsSettingsModel, RewardPointsSettings>();            
 
             CreateMap<RewardPointsHistory, CustomerRewardPointsModel>()
                 .ForMember(model => model.CreatedOn, options => options.Ignore())

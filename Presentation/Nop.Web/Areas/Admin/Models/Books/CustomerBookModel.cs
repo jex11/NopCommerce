@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Book
+namespace Nop.Web.Areas.Admin.Models.Books
 {
     public partial class CustomerBookModel : BaseNopModel
     {

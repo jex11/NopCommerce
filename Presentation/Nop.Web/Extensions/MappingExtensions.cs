@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain;
 using Nop.Core.Domain.Book;
 using Nop.Core.Domain.Common;
-using Nop.Web.Areas.Admin.Models.Book;
+using Nop.Web.Areas.Admin.Models.Books;
 using Nop.Web.Models.Common;
 
 namespace Nop.Web.Extensions
@@ -23,7 +23,8 @@ namespace Nop.Web.Extensions
             if (model == null)
                 return destination;
 
-            destination.BookName = model.Name;
+            destination.Id = model.Id;
+            destination.BookName = model.BookName;
             destination.CreatedBy = model.CreatedBy;
             destination.CreatedOn = model.CreatedOn;
 
