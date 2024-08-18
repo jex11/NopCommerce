@@ -18447,4 +18447,16 @@
   <LocaleResource Name="Admin.Books.BackToList">
     <Value>back to book list</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Books.EditBookDetails">
+    <Value>Edit book details</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Books.Fields.Name">
+    <Value>Book Name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Books.List.SearchName">
+    <Value>Book Name:</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Books.Fields.Date">
+    <Value>Created Date</Value>
+  </LocaleResource>
 </Language>
