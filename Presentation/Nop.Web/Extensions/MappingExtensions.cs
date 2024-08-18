@@ -1,10 +1,35 @@
-﻿using Nop.Core.Domain.Common;
+﻿using Nop.Core.Domain;
+using Nop.Core.Domain.Book;
+using Nop.Core.Domain.Common;
+using Nop.Web.Areas.Admin.Models.Book;
 using Nop.Web.Models.Common;
 
 namespace Nop.Web.Extensions
 {
     public static class MappingExtensions
     {
+        //book
+        public static Book ToEntity(this BookModel model, bool trimFields = true)
+        {
+            if (model == null)
+                return null;
+
+            var entity = new Book();
+            return ToEntity(model, entity, trimFields);
+        }
+
+        public static Book ToEntity(this BookModel model, Book destination, bool trimFields = true)
+        {
+            if (model == null)
+                return destination;
+
+            destination.BookName = model.Name;
+            destination.CreatedBy = model.CreatedBy;
+            destination.CreatedOn = model.CreatedOn;
+
+            return destination;
+        }
+
         //address
         public static Address ToEntity(this AddressModel model, bool trimFields = true)
         {

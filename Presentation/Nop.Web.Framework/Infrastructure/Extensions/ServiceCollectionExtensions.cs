@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,9 @@ using Nop.Core.Security;
 using Nop.Data;
 using Nop.Services.Authentication;
 using Nop.Services.Authentication.External;
+using Nop.Services.Blogs;
 using Nop.Services.Common;
+using Nop.Services.Customers;
 using Nop.Services.Security;
 using Nop.Web.Framework.Mvc.ModelBinding;
 using Nop.Web.Framework.Mvc.Routing;
@@ -68,6 +71,12 @@ namespace Nop.Web.Framework.Infrastructure.Extensions
 
             //create default file provider
             CommonHelper.DefaultFileProvider = new NopFileProvider(webHostEnvironment);
+
+            // Register AutoMapper and scan for profiles in the current assembly
+            services.AddAutoMapper(typeof(ServiceCollectionExtensions));
+
+            // Register DI custom service
+            services.AddSingleton<IBookService, BookService>(); //one instance for whole life cycle
 
             //initialize plugins
             var mvcCoreBuilder = services.AddMvcCore();
