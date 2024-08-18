@@ -40,7 +40,7 @@ namespace Nop.Web.Areas.Admin.Factories
                 throw new ArgumentNullException(nameof(searchModel));
 
             //get books
-            var books = _bookService.GetAllBooks(pageIndex: searchModel.Page - 1, pageSize: searchModel.PageSize);
+            var books = _bookService.GetAllBooks(searchModel.SearchName, pageIndex: searchModel.Page - 1, pageSize: searchModel.PageSize);
 
             //prepare list model
             var model = new BookListModel().PrepareToGrid(searchModel, books, () =>

@@ -6,6 +6,7 @@ using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Nop.Web.Areas.Admin.Models.Books
 {
@@ -30,6 +31,7 @@ namespace Nop.Web.Areas.Admin.Models.Books
         [CustomerBookValidator("BK-")]
         public string BookName { get; set; }
         public string CreatedBy { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy MMM dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime CreatedOn { get; set; }
         [NopResourceDisplayName("Admin.Vendors.Fields.PageSize")]
         public int PageSize { get; set; }

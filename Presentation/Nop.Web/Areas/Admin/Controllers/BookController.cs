@@ -35,8 +35,8 @@ namespace Nop.Web.Areas.Admin.Controllers
 
         public virtual IActionResult Create()
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
-            //    return AccessDeniedView();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
 
             //prepare model
             var model = _bookModelFactory.PrepareBookModel(new BookModel(), new Core.Domain.Book.Book());
@@ -48,8 +48,8 @@ namespace Nop.Web.Areas.Admin.Controllers
         [FormValueRequired("save", "save-continue")]
         public virtual IActionResult Create(BookModel model, bool continueEditing, IFormCollection form)
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageVendors))
-            //    return AccessDeniedView();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
 
 
             if (ModelState.IsValid)
@@ -74,8 +74,8 @@ namespace Nop.Web.Areas.Admin.Controllers
 
         public virtual IActionResult List()
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
-            //    return AccessDeniedView();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
 
             //prepare model
             var model = _bookModelFactory.PrepareBookSearchModel(new BookSearchModel());
@@ -86,8 +86,8 @@ namespace Nop.Web.Areas.Admin.Controllers
         [HttpPost]
         public virtual IActionResult List(BookSearchModel searchModel)
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
-            //    return AccessDeniedDataTablesJson();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedDataTablesJson();
 
             //prepare model
             var model = _bookModelFactory.PrepareBookListModel(searchModel);
@@ -97,8 +97,8 @@ namespace Nop.Web.Areas.Admin.Controllers
 
         public virtual IActionResult Edit(int id)
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageVendors))
-            //    return AccessDeniedView();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
 
             //try to get a book with the specified id
             var book = _bookService.GetBookById(id);
@@ -114,8 +114,8 @@ namespace Nop.Web.Areas.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual IActionResult Edit(BookModel model, bool continueEditing, IFormCollection form)
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageVendors))
-            //    return AccessDeniedView();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
 
             //try to get a vendor with the specified id
             var book = _bookService.GetBookById(model.Id);
@@ -147,8 +147,8 @@ namespace Nop.Web.Areas.Admin.Controllers
         [HttpPost]
         public virtual IActionResult Delete(int id)
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManageVendors))
-            //    return AccessDeniedView();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBooks))
+                return AccessDeniedView();
 
             //try to get a vendor with the specified id
             var book = _bookService.GetBookById(id);
