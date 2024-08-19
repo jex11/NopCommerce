@@ -1,6 +1,0 @@
-﻿{
-  "DataConnectionString": "Data Source=localhost;Initial Catalog=NopCommerceV2;Integrated Security=True;Persist Security Info=False",
-  "DataProvider": "sqlserver",
-  "SQLCommandTimeout": null,
-  "RawDataSettings": {}
-}
